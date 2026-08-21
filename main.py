@@ -11,8 +11,8 @@ WEIGHT_KG = int(os.environ.get("WEIGHT_KG"))
 HEIGHT_CM = int(os.environ.get("HEIGHT_CM"))
 AGE = int(os.environ.get("AGE"))
 
-nutrition_and_exercise_endpoint = "https://app.100daysofpython.dev/v1/nutrition/natural/exercise"
-workout_endpoint = "https://api.sheety.co/b31e3f1dcf8d6c6205b00bd0ba346c69/manoWorkouts/workouts"
+nutrition_and_exercise_endpoint = os.environ.get("EXERCISE_ENDPOINT")
+workout_endpoint = os.environ.get("SHEETY_ENDPOINT")
 
 headers = {
     "x-app-id": APP_ID,
