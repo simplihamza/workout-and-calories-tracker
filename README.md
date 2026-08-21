@@ -52,4 +52,18 @@ and the result is appended to a Google Sheet via the Sheety API.
 
 ## What I Learned
 
-<!-- TODO: fill in -->
+- Chaining two external APIs together: parsing free-text exercise input
+  with Nutritionix, then using its output to build the payload for a
+  second POST to Sheety.
+- A `for` loop body isn't just whatever's indented near it: I had the
+  `requests.post()` call sitting one indent level outside the loop that
+  built the payload, so only the last exercise from a multi-exercise
+  query ever got logged instead of all of them.
+- Reusing a variable name (`exercise`) for both the loop variable and an
+  earlier value silently shadows the original; renaming the input
+  variable to `exercise_question` fixed it.
+- Sheety expects the POST body nested under the sheet/tab name (e.g.
+  `{"workout": {...}}`), not a flat dict of column names.
+- Keeping config in `.env` instead of hardcoding it, including things
+  like API endpoint URLs, not just keys, makes the script portable
+  across different Sheety projects/sheets.
