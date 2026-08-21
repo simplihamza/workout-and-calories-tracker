@@ -31,9 +31,6 @@ and the result is appended to a Google Sheet via the Sheety API.
    - `EXERCISE_ENDPOINT`: the Nutritionix natural-language exercise
      endpoint URL
    - `SHEETY_ENDPOINT`: your Sheety project's endpoint URL for the sheet
-
-   Note: `.env.example` also has unused `X_APP_ID`/`X_APP_KEY` entries
-   left over; ignore those and use `APP_ID`/`API_KEY` as shown above.
 4. Set up a Google Sheet and a Sheety project for it (with columns:
    Exercise, Date, Time, Duration, Calories), then set `SHEETY_ENDPOINT`
    in `.env` to that project's endpoint.
@@ -44,9 +41,6 @@ and the result is appended to a Google Sheet via the Sheety API.
 
 ## Known Issues / Limitations
 
-- `.env.example` still has unused `X_APP_ID`/`X_APP_KEY` entries left
-  over alongside the `APP_ID`/`API_KEY` ones that `main.py` actually
-  reads.
 - No error handling around API responses (e.g. failed requests, missing
   fields, invalid input).
 
