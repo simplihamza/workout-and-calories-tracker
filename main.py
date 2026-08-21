@@ -19,10 +19,10 @@ headers = {
     "x-app-key": API_KEY
 }
 
-exercise = input("Enter what activity you performed: ")
+exercise_question = input("Enter what activity you performed: ")
 
 parameters = {
-    "query": exercise,
+    "query": exercise_question,
     "gender": GENDER,
     "weight_kg": WEIGHT_KG,
     "height_cm": HEIGHT_CM,
@@ -37,11 +37,12 @@ now_time = datetime.now().strftime("%X")
 
 for exercise in result["exercises"]:
     sheet_params = {
-        "Exercise": exercise,
-        "Date": today_date,
-        "Time": now_time,
-        "Duration": exercise["duration_min"],
-        "Calories": exercise["nf_calories"]
+        "workout":{
+        "exercise": exercise["name"].title(),
+        "date": today_date,
+        "time": now_time,
+        "duration": exercise["duration_min"],
+        "calories": exercise["nf_calories"]
     }
-sheet_response = requests.post(workout_endpoint, json=sheet_params)
-print(sheet_response.text)
+    }
+    sheet_response = requests.post(workout_endpoint, json=sheet_params)
